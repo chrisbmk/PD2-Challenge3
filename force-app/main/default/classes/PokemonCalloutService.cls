@@ -26,7 +26,7 @@ public class PokemonCalloutService {
   public static HttpResponse makeGetCallout(String pokemonId) {
     // Endpoint is stored in a Named Credential
     // An Auth Provider to the Org containing the PokemonManager Service was used
-    String endPoint = 'callout:PokemonManager' + pokemonId;
+    String endPoint = 'callout:PokemonManager/' + pokemonId;
 
     Http http = new Http();
     HttpRequest request = new HttpRequest();
