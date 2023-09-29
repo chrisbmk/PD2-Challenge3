@@ -28,7 +28,9 @@ private class PokemonCalloutServiceTest {
   static void testGetCallout() {
     Test.setMock(HttpCalloutMock.class, new PokemonCalloutServiceMock());
 
-    HttpResponse response = PokemonCalloutService.makeGetCallout();
+    // This is not a real salesforce Id. It's used for testing so it can be anything
+    String pokemonIdTest = '123456789001234'; 
+    HttpResponse response = PokemonCalloutService.makeGetCallout(pokemonIdTest);
 
     Map<String, Object> resObj = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
     List<Object> abilities = (List<Object>) resObj.get('abilities');

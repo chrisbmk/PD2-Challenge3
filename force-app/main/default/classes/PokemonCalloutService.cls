@@ -1,7 +1,8 @@
 public class PokemonCalloutService {
   public static HttpResponse makePostCallout() {
-    // Assuming authentication to the endpoint has been established the following is given
-    String endPoint = 'https://myOrgInstance.my.salesforce.com/services/apexrest/Pokemon__c/';
+    // Endpoint is stored in a Named Credential
+    // An Auth Provider to the Org containing the PokemonManager Service was used
+    String endPoint = 'callout:PokemonManager';
     String pokeName = '"ditto"';
     String moves = '["transform"]';
     String abilities = '["limber", "imposter"]';
@@ -22,9 +23,10 @@ public class PokemonCalloutService {
     return http.send(request);
   }
 
-  public static HttpResponse makeGetCallout() {
-    // Assuming authentication to the endpoint has been established the following is given
-    String endPoint = 'https://myOrgInstance.my.salesforce.com/services/apexrest/Pokemon__c/';
+  public static HttpResponse makeGetCallout(String pokemonId) {
+    // Endpoint is stored in a Named Credential
+    // An Auth Provider to the Org containing the PokemonManager Service was used
+    String endPoint = 'callout:PokemonManager' + pokemonId;
 
     Http http = new Http();
     HttpRequest request = new HttpRequest();
